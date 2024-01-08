@@ -1,11 +1,11 @@
 import axios from "axios";
 import { SERVER } from "../constants/server";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ResultTable from "../components/ResultTable";
 import { positionNameByCode } from "../constants/positionData";
 
 export default function ResultPage() {
-    const [result, setResult] = useState({});
+    const [result, setResult] = useState<{ [x: string] : []}>({});
 
     const countVotes = () => {
         axios({

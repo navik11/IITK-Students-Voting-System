@@ -11,11 +11,11 @@ import {
 } from "../constants/positionData.js";
 
 export default function VotingPage() {
-    const [candidatesData, setCandidateData] = useState({});
-    const [vote, setVote] = useState({ pref1: [], pref2: [], pref3: [] });
+    const [candidatesData, setCandidateData] = useState<{[x: string] : []}>({});
+    const [vote, setVote] = useState<{[x:string]:{rollno:number}[]}>({ pref1: [], pref2: [], pref3: [] });
 
     const { uc } = useParams();
-    const totalPositions = String(positionToVoteFor[uc ? uc : "y22"]).split(
+    const totalPositions = String(positionToVoteFor[uc ? uc : "y22btbs"]).split(
         ","
     ).length;
     const [readyPositions, setReadyPositions] = useState(0);
@@ -35,15 +35,12 @@ export default function VotingPage() {
             url:
                 SERVER +
                 "/candidate/getCandidates?positions=" +
-                positionToVoteFor[uc],
+                positionToVoteFor[String(uc)],
             withCredentials: true,
         })
             .then((res: any) => {
                 const data = res.data?.data?.allCandidates;
-                setCandidateData((cd) => (cd = data));
-                console.log(res);
-                console.log(data);
-                console.log(candidatesData);
+                setCandidateData(() => {return data});
             })
             .catch((error) => {
                 console.log(error);
@@ -51,7 +48,6 @@ export default function VotingPage() {
     }, []);
 
     useEffect(() => {
-        console.log(readyPositions, totalPositions);
         if (readyPositions == totalPositions) {
             setSubmitState(() => {
                 return "";
@@ -69,7 +65,7 @@ export default function VotingPage() {
         }
     }, [readyPositions]);
 
-    const updateReadyPositions = (c) => {
+    const updateReadyPositions = (c: String) => {
         if (c == "+")
             setReadyPositions((rp) => {
                 return rp + 1;
@@ -110,6 +106,7 @@ export default function VotingPage() {
         setLoader(() => {
             return "";
         });
+        console.log(vote)
         axios({
             method: "post",
             url: SERVER + "/gbm/submitVote",

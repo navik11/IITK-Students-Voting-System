@@ -1,4 +1,16 @@
-export default function ResultTable({ positionName, data }) {
+interface props {
+    positionName: String,
+    data: Array<{
+        rollno: number,
+        pref1VoteCount: number,
+        pref2VoteCount: number,
+        pref3VoteCount: number,
+        totalVoteCount: number,
+        fullname: String,
+    }>,
+}
+
+export default function ResultTable({ positionName, data }: props) {
     console.log(data);
     return (
         <>
@@ -19,7 +31,7 @@ export default function ResultTable({ positionName, data }) {
                     return (
                         <tbody>
                             <tr>
-                                <td>{cnd.rollno<999?"-":cnd.rollno}</td>
+                                <td>{String(cnd.rollno<999?"-":cnd.rollno)}</td>
                                 <td>{cnd.fullname}</td>
                                 <td>{}</td>
                                 <td>{cnd.pref1VoteCount}</td>

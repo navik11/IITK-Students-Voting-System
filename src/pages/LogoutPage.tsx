@@ -10,7 +10,7 @@ export default function LogoutPage() {
             method: "post",
             withCredentials: true,
             url: SERVER+"/gbm/logout",
-        }).then((res) => {
+        }).then(() => {
             navigate("/login");
         }).catch((e) => {
             console.log(e)

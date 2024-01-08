@@ -11,13 +11,12 @@ interface Props {
 }
 
 export default function CandidatesPlate({
-    positionCode,
     positionHeader,
     candidates,
     addVote,
     deleteVote,
 }: Props) {
-    const [pref, setPref] = useState([]);
+    const [pref, setPref] = useState<{fullname: String}[]>([]);
     const [indicator, setIndicator] = useState("bg-warning");
     const [message, setMessage] = useState(
         "Choose your candidates in prefered order."
@@ -42,20 +41,20 @@ export default function CandidatesPlate({
     const onCardClick = (candidate: any) => {
         console.log(pref.length);
         if (pref.length >= candidateLimit) {
-            setMessage((m) => (m = "To change prefrences, clear response ->"));
+            setMessage(() => { return "To change prefrences, clear response ->"});
             return;
         }
         if(pref.find(e => e == candidate)) {
-            setMessage((m) => m = "You can't select a candidate multiple times!");
+            setMessage(() => { return "You can't select a candidate multiple times!"});
             return;
         }
-        setPref((pref) => pref = [...pref, candidate])
+        setPref((pref) => { return [...pref, candidate]})
     };
 
     const clearResponse = () => {
         deleteVote(pref);
-        setPref((pref) => (pref = []));
-        setMessage((m) => (m = "Choose your candidates in prefered order."));
+        setPref(() => {return []});
+        setMessage(() => {return "Choose your candidates in prefered order."});
     };
 
     return (
@@ -88,7 +87,7 @@ export default function CandidatesPlate({
             </div>
             <div className="collapse-content">
                 <div className="mb-5 mt-5 flex flex-wrap w-full">
-                    {candidates.map((cand) => {
+                    {candidates.map((cand: any) => {
                         return (
                             <div onClick={() => onCardClick(cand)}>
                                 <CandidateCard candidate={cand}/>

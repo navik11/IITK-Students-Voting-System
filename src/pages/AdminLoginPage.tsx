@@ -30,7 +30,6 @@ function AdminLoginPage() {
         const email = formData.get("email");
         const match = String(email).match(/\d+/);
         const year = match ? parseInt(match[0], 10) : null;
-        const category = 'y'+String(year)
 
         console.log(SERVER)
 
