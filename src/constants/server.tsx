@@ -1,0 +1,1 @@
+export const SERVER = 'http://172.23.34.219:3000/api/v1'
