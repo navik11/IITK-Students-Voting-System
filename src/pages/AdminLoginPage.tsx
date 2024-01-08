@@ -27,9 +27,6 @@ function AdminLoginPage() {
         startLoading();
 
         const formData = new FormData(e.target);
-        const email = formData.get("email");
-        const match = String(email).match(/\d+/);
-        const year = match ? parseInt(match[0], 10) : null;
 
         console.log(SERVER)
 
