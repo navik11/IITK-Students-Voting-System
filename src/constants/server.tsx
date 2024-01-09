@@ -1,1 +1,1 @@
-export const SERVER = 'http://172.23.34.219:3000/api/v1'
+export const SERVER = 'https://voting-system-backend.vercel.app/api/v1'
