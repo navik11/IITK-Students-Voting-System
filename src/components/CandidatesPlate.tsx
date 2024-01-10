@@ -6,8 +6,8 @@ interface Props {
     positionHeader: String;
     positionCode: Number;
     candidates: any;
-    addVote: (p: any)=>void;
-    deleteVote: (p: any)=>void;
+    addVote: (p: any) => void;
+    deleteVote: (p: any) => void;
 }
 
 export default function CandidatesPlate({
@@ -16,21 +16,21 @@ export default function CandidatesPlate({
     addVote,
     deleteVote,
 }: Props) {
-    const [pref, setPref] = useState<{fullname: String}[]>([]);
+    const [pref, setPref] = useState<{ fullname: String }[]>([]);
     const [indicator, setIndicator] = useState("bg-warning");
     const [message, setMessage] = useState(
         "Choose your candidates in prefered order."
     );
 
-    const singleCandidate = (candidates.length == 2)
-    const candidateLimit = singleCandidate?2:3;
+    const singleCandidate = candidates.length == 2;
+    const candidateLimit = singleCandidate ? 2 : 3;
 
     useEffect(() => {
         if (pref.length >= candidateLimit) {
             setIndicator(() => {
                 return "bg-success";
             });
-            addVote(pref)
+            addVote(pref);
         } else {
             setIndicator(() => {
                 return "bg-warning";
@@ -41,20 +41,30 @@ export default function CandidatesPlate({
     const onCardClick = (candidate: any) => {
         console.log(pref.length);
         if (pref.length >= candidateLimit) {
-            setMessage(() => { return "To change prefrences, clear response ->"});
+            setMessage(() => {
+                return "To change prefrences, clear response ->";
+            });
             return;
         }
-        if(pref.find(e => e == candidate)) {
-            setMessage(() => { return "You can't select a candidate multiple times!"});
+        if (pref.find((e) => e == candidate)) {
+            setMessage(() => {
+                return "You can't select a candidate multiple times!";
+            });
             return;
         }
-        setPref((pref) => { return [...pref, candidate]})
+        setPref((pref) => {
+            return [...pref, candidate];
+        });
     };
 
     const clearResponse = () => {
         deleteVote(pref);
-        setPref(() => {return []});
-        setMessage(() => {return "Choose your candidates in prefered order."});
+        setPref(() => {
+            return [];
+        });
+        setMessage(() => {
+            return "Choose your candidates in prefered order.";
+        });
     };
 
     return (
@@ -68,20 +78,38 @@ export default function CandidatesPlate({
                     {positionHeader}
                     <div className="flex w-full mt-3 items-center">
                         <NameTag
-                            theme={pref[0] ? "bg-primary-content/50" : "bg-base-100"}
+                            theme={
+                                pref[0]
+                                    ? "bg-primary-content/50"
+                                    : "bg-base-100"
+                            }
                             cName={pref[0] ? pref[0]?.fullname : "Not choosen"}
                             ind={1}
                         />
                         <NameTag
-                            theme={pref[1] ? "bg-primary-content/50 mx-3" : "bg-base-100 mx-3"}
+                            theme={
+                                pref[1]
+                                    ? "bg-primary-content/50 mx-3"
+                                    : "bg-base-100 mx-3"
+                            }
                             cName={pref[1] ? pref[1]?.fullname : "Not choosen"}
                             ind={2}
                         />
-                        { singleCandidate?<></>:<NameTag
-                            theme={pref[2] ? "bg-primary-content/50" : "bg-base-100"}
-                            cName={pref[2] ? pref[2]?.fullname : "Not choosen"}
-                            ind={3}
-                        />}
+                        {singleCandidate ? (
+                            <></>
+                        ) : (
+                            <NameTag
+                                theme={
+                                    pref[2]
+                                        ? "bg-primary-content/50"
+                                        : "bg-base-100"
+                                }
+                                cName={
+                                    pref[2] ? pref[2]?.fullname : "Not choosen"
+                                }
+                                ind={3}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
@@ -90,9 +118,9 @@ export default function CandidatesPlate({
                     {candidates.map((cand: any) => {
                         return (
                             <div onClick={() => onCardClick(cand)}>
-                                <CandidateCard candidate={cand}/>
+                                <CandidateCard candidate={cand} />
                             </div>
-                        )
+                        );
                     })}
                 </div>
                 <div className="alert bg-transparent border-none">

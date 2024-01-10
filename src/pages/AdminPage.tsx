@@ -6,8 +6,8 @@ import { SERVER } from "../constants/server";
 export default function AdminPage() {
     const navigate = useNavigate();
 
-    const [avatarName, setAvatarName] = useState('Avatar')
-    const [loadingBar, setLoadingBar] = useState('hidden')
+    const [avatarName, setAvatarName] = useState("Avatar");
+    const [loadingBar, setLoadingBar] = useState("hidden");
 
     const getFile = (id: any) => {
         document.getElementById(id)?.click();
@@ -20,29 +20,36 @@ export default function AdminPage() {
 
     const addCandidate = (e: any) => {
         e.preventDefault();
-        
-        setLoadingBar(() => {return ""})
-        const formData = new FormData(e.target)
-        
+
+        setLoadingBar(() => {
+            return "";
+        });
+        const formData = new FormData(e.target);
+
         axios({
             method: "post",
-            url: SERVER+"/admin/addCandidate",
+            url: SERVER + "/admin/addCandidate",
             data: formData,
-            withCredentials:true,
+            withCredentials: true,
             headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }).then((res) => {
-            setLoadingBar(() => {return "hidden"})
-            window.alert("Candidate added!")
-            console.log("User added", res)
-        }).catch((error) => {
-            setLoadingBar(() => {return "hidden"})
-            window.alert("Failed to add candidate, plz see error log")
-            console.error(error);
+                "Content-Type": "multipart/form-data",
+            },
         })
-
-    }
+            .then((res) => {
+                setLoadingBar(() => {
+                    return "hidden";
+                });
+                window.alert("Candidate added!");
+                console.log("User added", res);
+            })
+            .catch((error) => {
+                setLoadingBar(() => {
+                    return "hidden";
+                });
+                window.alert("Failed to add candidate, plz see error log");
+                console.error(error);
+            });
+    };
 
     return (
         <>
@@ -89,7 +96,9 @@ export default function AdminPage() {
                         name="avatar"
                         type="file"
                         className="input input-bordered m-2 hidden"
-                        onChange={(obj) => {setAvatarName(() => getFileName(obj))}}
+                        onChange={(obj) => {
+                            setAvatarName(() => getFileName(obj));
+                        }}
                     ></input>
                     <label
                         className="input input-bordered m-2 items-center flex input-sm"
@@ -103,7 +112,7 @@ export default function AdminPage() {
                         value={"Add"}
                         className="input input-primary input-sm m-2"
                     ></input>
-                    <span className={"loading "+loadingBar}></span>
+                    <span className={"loading " + loadingBar}></span>
                 </form>
                 <button
                     className="btn btn-sm mt-[300px] max-w-32"

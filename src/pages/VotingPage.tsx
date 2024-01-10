@@ -11,8 +11,14 @@ import {
 } from "../constants/positionData.js";
 
 export default function VotingPage() {
-    const [candidatesData, setCandidateData] = useState<{[x: string] : []}>({});
-    const [vote, setVote] = useState<{[x:string]:{rollno:number}[]}>({ pref1: [], pref2: [], pref3: [] });
+    const [candidatesData, setCandidateData] = useState<{ [x: string]: [] }>(
+        {}
+    );
+    const [vote, setVote] = useState<{ [x: string]: { rollno: number }[] }>({
+        pref1: [],
+        pref2: [],
+        pref3: [],
+    });
 
     const { uc } = useParams();
     const totalPositions = String(positionToVoteFor[uc ? uc : "y22btbs"]).split(
@@ -40,7 +46,9 @@ export default function VotingPage() {
         })
             .then((res: any) => {
                 const data = res.data?.data?.allCandidates;
-                setCandidateData(() => {return data});
+                setCandidateData(() => {
+                    return data;
+                });
             })
             .catch((error) => {
                 console.log(error);
@@ -106,7 +114,7 @@ export default function VotingPage() {
         setLoader(() => {
             return "";
         });
-        console.log(vote)
+        console.log(vote);
         axios({
             method: "post",
             url: SERVER + "/gbm/submitVote",
@@ -202,7 +210,8 @@ export default function VotingPage() {
                             </ul>
                         </li>
                         <li>
-                            On completion of candidate selection, Submit button will be activated. And you can submit your vote. 
+                            On completion of candidate selection, Submit button
+                            will be activated. And you can submit your vote.
                         </li>
                         <li>
                             You should review your choices before submitting to
@@ -210,7 +219,10 @@ export default function VotingPage() {
                         </li>
                     </ol>
 
-                    <p>If you have any questions or concerns, feel free to seek assistance from the election officers.</p>
+                    <p>
+                        If you have any questions or concerns, feel free to seek
+                        assistance from the election officers.
+                    </p>
                     <p>Thank you for participating in the voting process!</p>
                 </div>
                 <div className="flex justify-between items-center w-full mt-32">
@@ -223,7 +235,7 @@ export default function VotingPage() {
                         </p>
                     </div>
                     <img
-                        src="../../src/assets/iitk_logo.svg"
+                        src="/assets/iitk_logo.svg"
                         className="size-16 scale-150"
                     />
                 </div>

@@ -24,7 +24,7 @@ export default function VoteReview({
                     >
                         <span
                             className={
-                                "loading loading-spinner h-5 w-5 "+loader
+                                "loading loading-spinner h-5 w-5 " + loader
                             }
                         ></span>
                         Confirm and submit

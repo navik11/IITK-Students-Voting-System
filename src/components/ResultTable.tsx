@@ -1,13 +1,13 @@
 interface props {
-    positionName: String,
+    positionName: String;
     data: Array<{
-        rollno: number,
-        pref1VoteCount: number,
-        pref2VoteCount: number,
-        pref3VoteCount: number,
-        totalVoteCount: number,
-        fullname: String,
-    }>,
+        rollno: number;
+        pref1VoteCount: number;
+        pref2VoteCount: number;
+        pref3VoteCount: number;
+        totalVoteCount: number;
+        fullname: String;
+    }>;
 }
 
 export default function ResultTable({ positionName, data }: props) {
@@ -31,7 +31,11 @@ export default function ResultTable({ positionName, data }: props) {
                     return (
                         <tbody>
                             <tr>
-                                <td>{String(cnd.rollno<999?"-":cnd.rollno)}</td>
+                                <td>
+                                    {String(
+                                        cnd.rollno < 999 ? "-" : cnd.rollno
+                                    )}
+                                </td>
                                 <td>{cnd.fullname}</td>
                                 <td>{}</td>
                                 <td>{cnd.pref1VoteCount}</td>

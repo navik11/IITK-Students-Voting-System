@@ -30,15 +30,15 @@ function LoginPage() {
 
         axios({
             method: "post",
-            url: SERVER+"/gbm/ccLogin",
+            url: SERVER + "/gbm/ccLogin",
             data: formData,
             withCredentials: true,
             headers: { "Content-Type": "multipart/form-data" },
         })
             .then((res) => {
-                console.log(res)
+                console.log(res);
                 stopLoading();
-                navigate("/gbm/vote/"+res.data.data.batchCode);
+                navigate("/gbm/vote/" + res.data.data.batchCode);
             })
             .catch((error: any) => {
                 stopLoading();
@@ -53,7 +53,7 @@ function LoginPage() {
         <div className="flex flex-col justify-center items-center h-screen w-screen">
             <div className="flex flex-col items-center justify-center">
                 <img
-                    src="./src/assets/iitk_logo.svg"
+                    src="/assets/iitk_logo.svg"
                     className="size-32 scale-150"
                 />
                 <h1 className="text-3xl mt-6 font-bold">

@@ -1,4 +1,4 @@
-export const positionNameByCode: { [x: number]: string} = {
+export const positionNameByCode: { [x: number]: string } = {
     1: "President, Students' Gymkhana",
     2: "General Secretary (PG), Academics and Career Council",
     3: "General Secretary (UG), Academics and Career Council",
@@ -11,7 +11,7 @@ export const positionNameByCode: { [x: number]: string} = {
     10: "Senetors BT/BS Y23",
 };
 
-export const positionToVoteFor: { [x: string]: string; } = {
+export const positionToVoteFor: { [x: string]: string } = {
     y20btbs: "1,3,4,5,6",
     y21btbs: "1,3,4,5,6",
     y22btbs: "1,3,4,5,6",

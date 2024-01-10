@@ -28,11 +28,11 @@ function AdminLoginPage() {
 
         const formData = new FormData(e.target);
 
-        console.log(SERVER)
+        console.log(SERVER);
 
         axios({
             method: "post",
-            url: SERVER+"/admin/ccLogin",
+            url: SERVER + "/admin/ccLogin",
             data: formData,
             withCredentials: true,
             headers: { "Content-Type": "multipart/form-data" },
@@ -54,7 +54,7 @@ function AdminLoginPage() {
         <div className="flex flex-col justify-center items-center h-screen w-screen">
             <div className="flex flex-col items-center justify-center">
                 <img
-                    src="../../src/assets/iitk_logo.svg"
+                    src="/assets/iitk_logo.svg"
                     className="size-32 scale-150"
                 />
                 <h1 className="text-3xl mt-6 font-bold">

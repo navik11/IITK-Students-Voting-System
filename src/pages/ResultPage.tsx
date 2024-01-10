@@ -5,7 +5,7 @@ import ResultTable from "../components/ResultTable";
 import { positionNameByCode } from "../constants/positionData";
 
 export default function ResultPage() {
-    const [result, setResult] = useState<{ [x: string] : []}>({});
+    const [result, setResult] = useState<{ [x: string]: [] }>({});
 
     const countVotes = () => {
         axios({
@@ -26,17 +26,17 @@ export default function ResultPage() {
 
     return (
         <div className="p-12">
-              <div className="flex justify-between items-center w-full">
-                    <div>
-                        <span className="text-3xl font-semibold">
-                            Results, General Election 2024
-                        </span>
-                    </div>
-                    <img
-                        src="../../src/assets/iitk_logo.svg"
-                        className="size-16 scale-150"
-                    />
+            <div className="flex justify-between items-center w-full">
+                <div>
+                    <span className="text-3xl font-semibold">
+                        Results, General Election 2024
+                    </span>
                 </div>
+                <img
+                    src="/assets/iitk_logo.svg"
+                    className="size-16 scale-150"
+                />
+            </div>
             <div className=""></div>
             <div className="btn btn-xs rounded-full px-3" onClick={countVotes}>
                 Count Votes
