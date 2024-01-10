@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route
-                path="/gbm/vote/:uc"
+                path="/gbm/vote"
                 element={<ProtectedRoute comp={<VotingPage />} />}
             />
             <Route path="/logout" element={<LogoutPage />} />

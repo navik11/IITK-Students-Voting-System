@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CandidatesPlate from "../components/CandidatesPlate";
 import axios from "axios";
 import VoteReview from "../components/VoteReview";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { readErrorMessage } from "../utils/ErrorMessageReader";
 import { SERVER } from "../constants/server";
 import {
@@ -20,7 +20,11 @@ export default function VotingPage() {
         pref3: [],
     });
 
-    const { uc } = useParams();
+    // const { uc } = useParams();
+    const location = useLocation();
+
+    const uc = location.state?.batch || {};
+
     const totalPositions = String(positionToVoteFor[uc ? uc : "y22btbs"]).split(
         ","
     ).length;

@@ -38,7 +38,9 @@ function LoginPage() {
             .then((res) => {
                 console.log(res);
                 stopLoading();
-                navigate("/gbm/vote/" + res.data.data.batchCode);
+                navigate("/gbm/vote", {
+                    state: { batch: res.data.data.batchCode },
+                });
             })
             .catch((error: any) => {
                 stopLoading();
