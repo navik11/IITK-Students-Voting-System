@@ -1,1 +1,1 @@
-export const SERVER = 'https://voting-system-backend.vercel.app/api/v1'
+export const SERVER = 'https://voting-system-backend-x086.onrender.com/api/v1'
