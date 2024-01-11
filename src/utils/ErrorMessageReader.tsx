@@ -1,4 +1,5 @@
 function readErrorMessage(error: any) {
+    console.log(error)
     if (!error.response) return error.message;
     else {
         const regex = /<pre>(.*?)<br>/;
