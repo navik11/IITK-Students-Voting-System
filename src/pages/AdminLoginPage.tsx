@@ -80,7 +80,7 @@ function AdminLoginPage() {
                 <input
                     name="password"
                     placeholder="CC Password"
-                    type="text"
+                    type="password"
                     required
                     className="input input-bordered input-md w-full mt-2"
                 />

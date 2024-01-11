@@ -6,7 +6,7 @@ export default function CandidateCard({ candidate }: any) {
                 <img
                     src={
                         candidate.avatar == "notaLogo"
-                            ? "../../../src/assets/notaLogo.svg"
+                            ? "/assets/notaLogo.svg"
                             : String(candidate.avatar).replace(
                                   "upload/",
                                   "upload/ar_1:1,c_crop,g_face/"

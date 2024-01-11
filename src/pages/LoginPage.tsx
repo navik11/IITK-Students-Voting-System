@@ -11,6 +11,8 @@ function LoginPage() {
         "Please use your CC Id and password"
     );
 
+    // const [passtype, setPasstype] = useState("");
+
     const startLoading = () => {
         setLoaderClass(() => "");
         setLoginState(() => "hidden");
@@ -37,6 +39,13 @@ function LoginPage() {
         })
             .then((res) => {
                 console.log(res);
+                if (res.data.data.isVoted) {
+                    setMessage(() => {
+                        return "You have already submitted your vote";
+                    });
+                    stopLoading();
+                    return;
+                }
                 stopLoading();
                 navigate("/gbm/vote", {
                     state: { batch: res.data.data.batchCode },
@@ -81,7 +90,7 @@ function LoginPage() {
                 <input
                     name="password"
                     placeholder="CC Password"
-                    type="text"
+                    type={"password"}
                     required
                     className="input input-bordered input-md w-full mt-2"
                 />
