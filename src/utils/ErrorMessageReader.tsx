@@ -1,8 +1,8 @@
 function readErrorMessage(error: any) {
-    console.log(error)
+    // console.log(error)s
     if (!error.response) return error.message;
     else {
-        const regex = /<pre>(.*?)<br>/;
+        const regex = /<pre>(.*?)<\/pre>/;
         const match = String(error.response.data).match(regex);
 
         if (match) {
