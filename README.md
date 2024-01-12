@@ -1,5 +1,7 @@
 # IIT Kanpur Student Voting System
 
+![Cover-Image](public\assets\voting-bg.png)
+
 ## Overview
 
 The IIT Kanpur Student Voting System is designed to facilitate secure, safe, and easy voting for executive positions within the institute. This system ensures that only eligible students with valid IIT Kanpur credentials can participate in the voting process.
