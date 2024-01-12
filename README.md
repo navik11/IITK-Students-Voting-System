@@ -1,6 +1,6 @@
 # IIT Kanpur Student Voting System
 
-![Cover-Image](public\assets\voting-bg.png)
+![Cover-Image](https://github.com/navik11/Voting-System--frontend/blob/main/public/assets/voting-bg.png)
 
 ## Overview
 
